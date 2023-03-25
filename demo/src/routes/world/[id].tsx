@@ -1,5 +1,6 @@
 import { App } from "../../App";
 
+// Don't mind me. Just testing types
 export interface PathInfo<TData = Record<string, string>> {
   params: Record<string, string>;
   data?: TData;

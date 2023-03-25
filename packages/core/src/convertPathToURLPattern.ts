@@ -40,23 +40,18 @@ function comparePatterns(a: Pattern, b: Pattern): number {
     const p2 = b.segments[index];
 
     if (p1 === undefined) {
-      // b is more specific
       return 1;
     }
     if (p2 === undefined) {
-      // a is more specific
       return -1;
     }
     if (p1.isCatchAll && !p2.isCatchAll) {
-      // b is more specific
       return 1;
     }
     if (p2.isCatchAll && !p1.isCatchAll) {
-      // a is more specific
       return -1;
     }
     if (p1.isDynamic && !p2.isDynamic) {
-      // b is more specific
       return 1;
     }
     if (p2.isDynamic && !p1.isDynamic) {
@@ -68,7 +63,7 @@ function comparePatterns(a: Pattern, b: Pattern): number {
   return a.pattern.localeCompare(b.pattern);
 }
 
-function sortPatterns(patterns: Array<string>): Array<string> {
+export function sortPatterns(patterns: Array<string>): Array<string> {
   return Array.from(new Set(patterns))
     .map((pattern) => {
       return {
