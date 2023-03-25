@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
-    "build:client": "vite build --ssrManifest --outDir dist/static",
+    "build:server": "vite build --ssr",
+    "build:client": "vite build",
     "build:prerender": "impala prerender",
     "build": "NODE_ENV=development npm run build:client && npm run build:server && npm run build:prerender",
     "preview": "vite preview"
