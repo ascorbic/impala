@@ -17,7 +17,7 @@ Impala is a bare-bones static-site generator, powered by Vite. It currently supp
 
 ## Usage
 
-See the demo site for now
+See the demo site for now. Dev mode is not implemented yet.
 
 ## FAQ
 
@@ -40,3 +40,9 @@ Deliberately not. If you want client-side navigation, use one of the many other 
 ### Does it support other frontend frameworks?
 
 I started with React because it's the one most obviously lacking a basic SSG, but the React-specific code is in a separate package and I want to add support for other frameworks.
+
+## License
+
+Copyright © 2023 Matt Kane. Licenced under the MIT licence.
+
+Impala logo created by [Freepik - Flaticon](https://www.flaticon.com/free-icons/impala)
