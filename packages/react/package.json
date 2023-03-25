@@ -1,6 +1,6 @@
 {
   "name": "@impalajs/react",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "scripts": {
     "build": "tsup src/index.ts src/client.tsx --format cjs,esm --dts --clean"
@@ -34,5 +34,8 @@
   "peerDependencies": {
     "react": ">=18",
     "react-dom": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
