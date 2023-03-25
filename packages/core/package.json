@@ -1,0 +1,31 @@
+{
+  "name": "@impalajs/core",
+  "version": "0.0.0",
+  "description": "",
+  "bin": {
+    "impala": "./dist/cli.mjs"
+  },
+  "scripts": {
+    "build": "tsup src/core.ts src/cli.ts --format esm --dts --clean"
+  },
+  "module": "./dist/core.mjs",
+  "types": "./dist/core.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/core.d.ts",
+      "import": "./dist/core.mjs"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "tsup": "^6.7.0"
+  },
+  "dependencies": {
+    "path-to-regexp": "^6.2.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
