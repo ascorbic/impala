@@ -13,6 +13,38 @@ function stripExtension(path: string) {
   return path.replace(/\.[^/.]+$/, "");
 }
 
+function shallowCompare(
+  obj1?: Record<string, unknown>,
+  obj2?: Record<string, unknown>
+): boolean {
+  // Check if both objects are null or undefined
+  if (obj1 == obj2) {
+    return true;
+  }
+
+  if (!obj1 || !obj2) {
+    return false;
+  }
+
+  const keys1 = Object.keys(obj1);
+  const keys2 = Object.keys(obj2);
+
+  if (keys1.length !== keys2.length) {
+    return false;
+  }
+  for (const key of keys1) {
+    if (obj1[key] !== obj2[key]) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+/**
+ * We can't use the vite dev server directly, because we need to do SSR.
+ * Because of this, we create a custom server and use the vite server as middleware.
+ */
 export async function createServer() {
   console.log("Starting dev server!");
   const app = express();
@@ -45,6 +77,7 @@ export async function createServer() {
 
       const mod = routeModules[result.chunk];
       const baseRoute = stripExtension(result.chunk);
+      // Try and find a data module for this route
       const dataMod =
         dataModules[`${baseRoute}.data.ts`] ||
         dataModules[`${baseRoute}.data.js`];
@@ -53,16 +86,31 @@ export async function createServer() {
 
       const routeData = await getRouteData?.();
 
+      let data: Awaited<
+        ReturnType<typeof getStaticPaths>
+      >["paths"][number]["data"];
+
       if (isDynamicRoute(result.chunk)) {
-        const paths = await getStaticPaths?.();
+        const { paths } = (await getStaticPaths?.()) || {};
+        const matched = paths?.find((p) =>
+          shallowCompare(p.params, result.params)
+        );
+        data = matched?.data;
+        console.log({ matched });
+
+        if (!matched) {
+          console.log("No match for dynamic route", result.chunk, paths);
+          res.status(404).end("404");
+          return;
+        }
       }
 
       const context = {
-        url: req.originalUrl,
+        path: req.originalUrl,
         routeData,
         chunk: result.chunk,
         params: result.params,
-        // data: path.data,
+        data,
       };
 
       const { body, head } = await render(context, mod, []);

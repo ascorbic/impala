@@ -1,7 +1,5 @@
 export function getRouteData() {
   return {
-    props: {
-      msg: "hello world",
-    },
+    msg: "hello world",
   };
 }

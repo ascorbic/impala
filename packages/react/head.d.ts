@@ -1,1 +1,1 @@
-export * from "./dist/head";
+export { Head } from "./dist/head";
