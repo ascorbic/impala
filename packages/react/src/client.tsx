@@ -14,7 +14,7 @@ export function clientBootstrap(modules: ModuleImports<RouteModule>) {
     if (mod) {
       mod().then(({ default: Page }) => {
         ReactDOM.hydrateRoot(
-          document.getElementById("app")!,
+          document.getElementById("__impala")!,
           <Page {...context} />
         );
       });

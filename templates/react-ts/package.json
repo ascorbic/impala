@@ -1,5 +1,5 @@
 {
-  "name": "impala-demo",
+  "name": "impala-app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -12,8 +12,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@impalajs/core": "workspace:*",
-    "@impalajs/react": "workspace:*",
+    "@impalajs/core": "latest",
+    "@impalajs/react": "latest",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -22,7 +22,6 @@
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^3.1.0",
-    "create-impala": "workspace:*",
     "typescript": "^4.9.3",
     "vite": "^4.2.0"
   }
