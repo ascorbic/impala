@@ -1,24 +1,29 @@
-import type { ModuleImports, RouteModule } from "@impalajs/core";
+import type {
+  ModuleImports,
+  RouteModule as CoreRouteModule,
+} from "@impalajs/core";
 import type { ElementType } from "react";
 import ReactDOM from "react-dom/client";
 
-export type RouteModules = ModuleImports<RouteModule<ElementType>>;
-
-export function clientBootstrap(
-  modules: ModuleImports<RouteModule<ElementType>>
-) {
+export type RouteModule = CoreRouteModule<ElementType>;
+export function clientBootstrap(modules: ModuleImports<RouteModule>) {
   const context = (window as any).___CONTEXT;
 
-  if (context.chunk) {
+  if (context && "chunk" in context) {
     const mod = modules[context.chunk];
     if (mod) {
       mod().then(({ default: Page }) => {
-        ReactDOM.hydrateRoot(document, <Page {...context} />);
+        ReactDOM.hydrateRoot(
+          document.getElementById("app")!,
+          <Page {...context} />
+        );
       });
     } else {
       console.error(
-        `Could not hydrate page. Module not found: ${context.chunk}`
+        `[Impala] Could not hydrate page. Module not found: ${context?.chunk}`
       );
     }
+  } else {
+    console.log("[Impala] No context found. Skipping hydration.");
   }
 }

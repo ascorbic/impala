@@ -2,4 +2,4 @@
 publish = "dist/static"
 
 [dev]
-framework = "#static"
+command = "npm run dev"

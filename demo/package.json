@@ -4,17 +4,16 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "impala dev",
     "build:server": "vite build --ssr",
     "build:client": "vite build",
     "build:prerender": "impala prerender",
-    "build": "NODE_ENV=development npm run build:client && npm run build:server && npm run build:prerender",
+    "build": "npm run build:client && npm run build:server && npm run build:prerender",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@impalajs/core": "workspace:^0.0.0",
-    "@impalajs/react": "workspace:^0.0.0",
-    "path-to-regexp": "^6.2.1",
+    "@impalajs/core": "workspace:*",
+    "@impalajs/react": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

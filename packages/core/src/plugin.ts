@@ -22,7 +22,7 @@ export default function plugin(): Plugin {
         config.build.ssrManifest = true;
         config.build.manifest = true;
         config.build.rollupOptions ||= {};
-        config.build.rollupOptions.input = "/src/entry-client.tsx" as const;
+        config.build.rollupOptions.input = "index.html";
       }
     },
 

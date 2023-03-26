@@ -38,5 +38,8 @@ export interface ServerEntry<TElement = HTMLElement> {
     context: Context,
     mod: RouteModuleFunction<TElement>,
     bootstrapModules?: Array<string>
-  ): string;
+  ): Promise<{
+    body: string;
+    head: string;
+  }>;
 }
