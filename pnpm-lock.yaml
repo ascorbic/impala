@@ -13,6 +13,7 @@ importers:
       '@types/react': ^18.0.28
       '@types/react-dom': ^18.0.11
       '@vitejs/plugin-react': ^3.1.0
+      create-impala: workspace:*
       react: ^18.2.0
       react-dom: ^18.2.0
       typescript: ^4.9.3
@@ -27,6 +28,7 @@ importers:
       '@types/react': 18.0.28
       '@types/react-dom': 18.0.11
       '@vitejs/plugin-react': 3.1.0_vite@4.2.1
+      create-impala: link:../packages/create-impala
       typescript: 4.9.5
       vite: 4.2.1_@types+node@18.15.7
 
@@ -47,6 +49,18 @@ importers:
       tsup: 6.7.0
       vite: 4.2.1
 
+  packages/create-impala:
+    specifiers:
+      '@clack/prompts': ^0.6.3
+      degit: ^2.8.4
+      picocolors: ^1.0.0
+      tsup: ^6.7.0
+    devDependencies:
+      '@clack/prompts': 0.6.3
+      degit: 2.8.4
+      picocolors: 1.0.0
+      tsup: 6.7.0
+
   packages/react:
     specifiers:
       '@impalajs/core': workspace:*
@@ -59,6 +73,31 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       tsup: 6.7.0
+
+  templates/react-ts:
+    specifiers:
+      '@impalajs/core': latest
+      '@impalajs/react': latest
+      '@types/node': ^18.15.7
+      '@types/react': ^18.0.28
+      '@types/react-dom': ^18.0.11
+      '@vitejs/plugin-react': ^3.1.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
+      typescript: ^4.9.3
+      vite: ^4.2.0
+    dependencies:
+      '@impalajs/core': link:../../packages/core
+      '@impalajs/react': link:../../packages/react
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    devDependencies:
+      '@types/node': 18.15.7
+      '@types/react': 18.0.28
+      '@types/react-dom': 18.0.11
+      '@vitejs/plugin-react': 3.1.0_vite@4.2.1
+      typescript: 4.9.5
+      vite: 4.2.1_@types+node@18.15.7
 
 packages:
 
@@ -289,6 +328,23 @@ packages:
       '@babel/helper-validator-identifier': 7.19.1
       to-fast-properties: 2.0.0
     dev: true
+
+  /@clack/core/0.3.2:
+    resolution: {integrity: sha512-FZnsNynwGDIDktx6PEZK1EuCkFpY4ldEX6VYvfl0dqeoLPb9Jpw1xoUXaVcGR8ExmYNm1w2vdGdJkEUYD/2pqg==}
+    dependencies:
+      picocolors: 1.0.0
+      sisteransi: 1.0.5
+    dev: true
+
+  /@clack/prompts/0.6.3:
+    resolution: {integrity: sha512-AM+kFmAHawpUQv2q9+mcB6jLKxXGjgu/r2EQjEwujgpCdzrST6BJqYw00GRn56/L/Izw5U7ImoLmy00X/r80Pw==}
+    dependencies:
+      '@clack/core': 0.3.2
+      picocolors: 1.0.0
+      sisteransi: 1.0.5
+    dev: true
+    bundledDependencies:
+      - is-unicode-supported
 
   /@esbuild/android-arm/0.17.12:
     resolution: {integrity: sha512-E/sgkvwoIfj4aMAPL2e35VnUJspzVYl7+M1B2cqeubdBhADV4uPon0KCc8p2G+LqSJ6i8ocYPCqY3A4GGq0zkQ==}
@@ -861,6 +917,12 @@ packages:
         optional: true
     dependencies:
       ms: 2.1.2
+    dev: true
+
+  /degit/2.8.4:
+    resolution: {integrity: sha512-vqYuzmSA5I50J882jd+AbAhQtgK6bdKUJIex1JNfEUPENCgYsxugzKVZlFyMwV4i06MmnV47/Iqi5Io86zf3Ng==}
+    engines: {node: '>=8.0.0'}
+    hasBin: true
     dev: true
 
   /depd/2.0.0:
@@ -1655,6 +1717,10 @@ packages:
 
   /signal-exit/3.0.7:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
+    dev: true
+
+  /sisteransi/1.0.5:
+    resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
     dev: true
 
   /slash/3.0.0:

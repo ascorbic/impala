@@ -17,7 +17,17 @@ Impala is a bare-bones static-site generator, powered by [Vite](https://github.c
 
 ## Usage
 
-See the demo site for now. Dev mode is not implemented yet.
+## Routing
+
+Create pages in `src/routes` and they will be available as routes in your site. For example, `src/routes/about.tsx` will be available at `/about`. You can also create dynamic routes, like `src/routes/blog/[slug].tsx`, but you'll need to add a `[slug].data.ts` file with a `getStaticPaths` function to tell Impala what paths to generate and the data to use.
+
+You can also do catch-all routes, like `src/routes/blog/[...slug].tsx`, which also needs a `[...slug].data.ts` file with a `getStaticPaths` function.
+
+## Data fetching
+
+For dynamic routes you should fetch data in `getStaticPaths`. For static routes you should fetch data in `getRouteData`. For example, if you have a route at `src/routes/blog/[slug].tsx`, you should create a `src/routes/blog/[slug].data.ts` file with a `getStaticPaths` function. This function should return an array of paths to generate, and the data to use for each path.
+
+See the demo site for more.
 
 ## FAQ
 

@@ -1,0 +1,23 @@
+{
+  "name": "create-impala",
+  "version": "0.0.1",
+  "description": "",
+  "bin": {
+    "create-impala": "create-impala.js"
+  },
+  "scripts": {
+    "build": "tsup --format cjs src/cli.ts --clean"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@clack/prompts": "^0.6.3",
+    "degit": "^2.8.4",
+    "picocolors": "^1.0.0",
+    "tsup": "^6.7.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

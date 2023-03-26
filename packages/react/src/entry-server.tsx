@@ -2,7 +2,6 @@ import { renderToPipeableStream, renderToStaticMarkup } from "react-dom/server";
 import { ElementType, useContext } from "react";
 import type { Context, RouteModule } from "@impalajs/core";
 import { Writable, WritableOptions } from "node:stream";
-import viteReact from "@vitejs/plugin-react";
 import { HeadContext } from "./head-context";
 
 class StringResponse extends Writable {
@@ -47,8 +46,7 @@ export async function render(
 
   const { pipe } = renderToPipeableStream(<Page {...context} />, {
     bootstrapModules,
-    bootstrapScriptContent: `window.___CONTEXT=${JSON.stringify(context)};
-    `,
+    bootstrapScriptContent: `window.___CONTEXT=${JSON.stringify(context)};`,
     onAllReady() {
       pipe(response);
     },
