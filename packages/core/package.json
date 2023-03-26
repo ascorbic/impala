@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "description": "",
   "bin": {
-    "impala": "./dist/cli.mjs"
+    "impala": "./cli.mjs"
   },
   "scripts": {
     "build": "tsup src/core.ts src/cli.ts src/plugin.ts --format esm --dts --clean"

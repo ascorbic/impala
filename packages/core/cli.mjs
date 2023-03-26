@@ -9,4 +9,4 @@ if (currentMajor < minimumMajorVersion) {
   process.exit(1);
 }
 
-import("./dist/cli.js").then(({ createImpala }) => createImpala());
+import("./dist/cli.mjs").then(({ main }) => main());
