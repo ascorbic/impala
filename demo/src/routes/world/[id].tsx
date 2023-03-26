@@ -1,40 +1,20 @@
+import { DynamicRouteProps } from "@impalajs/core";
 import { App } from "../../App";
-
-// Don't mind me. Just testing types
-export interface PathInfo<TData = Record<string, string>> {
-  params: Record<string, string>;
-  data?: TData;
-}
-
-export interface DataModule<
-  TPathData extends Record<string, unknown> = Record<string, string>,
-  TRouteData extends Record<string, unknown> = Record<string, string>
-> {
-  getStaticPaths: () =>
-    | Promise<{ paths: Array<PathInfo<TPathData>> }>
-    | { paths: Array<PathInfo<TPathData>> };
-  getRouteData?: () => Promise<TRouteData>;
-}
-type DataType<Mod extends DataModule> =
-  StaticPaths<Mod>["paths"][number]["params"];
-
-type StaticPaths<Mod extends DataModule> = (ReturnType<
-  Mod["getStaticPaths"]
-> extends PromiseLike<any>
-  ? Awaited<ReturnType<Mod["getStaticPaths"]>>
-  : ReturnType<Mod["getStaticPaths"]>) &
-  (unknown & {});
+import { Head } from "@impalajs/react/head";
 
 export default function Hello({
-  url,
+  path,
   params,
-}: {
-  url: string;
-  params: DataType<typeof import("./[id].data")>;
-}) {
+  data,
+}: DynamicRouteProps<typeof import("./[id].data")>) {
   return (
-    <App title={params.title}>
-      <div>Hello {url}!</div>
+    <App title={data?.title}>
+      <Head>
+        <meta name="description" content={data.description || "A page"} />
+      </Head>
+      <div>
+        Hello {path} {params.id}!
+      </div>
     </App>
   );
 }

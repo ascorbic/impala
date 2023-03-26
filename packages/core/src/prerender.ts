@@ -12,15 +12,6 @@ function stripExtension(path: string) {
   return path.replace(/\.[^/.]+$/, "");
 }
 export async function prerender(root: string) {
-  const manifestPath = path.resolve(root, "dist/static/manifest.json");
-  if (!existsSync(manifestPath)) {
-    console.error(
-      `Cannot find manifest.json at ${manifestPath}. Did you build the site?`
-    );
-    return;
-  }
-  const manifest = JSON.parse(await fs.readFile(manifestPath, "utf-8"));
-
   const { render, routeModules, dataModules } = (await import(
     path.resolve(root, "./dist/server/entry-server.js")
   )) as ServerEntry;
@@ -38,7 +29,7 @@ export async function prerender(root: string) {
       .replace("<!--app-content-->", body);
 
     const filePath = `dist/static${
-      context.url === "/" ? "/index" : context.url
+      context.path === "/" ? "/index" : context.path
     }.html`;
 
     const dir = path.dirname(path.resolve(root, filePath));
@@ -91,19 +82,19 @@ export async function prerender(root: string) {
         const { paths } = await getStaticPaths();
 
         await Promise.all(
-          paths.map((path) => {
-            const url = toPath(path.params);
-            if (!url) {
+          paths.map((pathInfo) => {
+            const path = toPath(pathInfo.params);
+            if (!path) {
               console.error(`Invalid path params for route: ${route}`);
               return;
             }
             return prerenderRoute(
               {
-                url,
+                path,
                 routeData,
                 chunk: route,
-                params: path.params,
-                data: path.data,
+                params: pathInfo.params,
+                data: pathInfo.data,
               },
               mod
             );
@@ -111,7 +102,7 @@ export async function prerender(root: string) {
         );
       } else {
         await prerenderRoute(
-          { url: routePattern, chunk: route, routeData },
+          { path: routePattern, chunk: route, routeData },
           mod
         );
       }
