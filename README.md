@@ -6,12 +6,12 @@
 
 ## Very simple Vite static site generator
 
-Impala is a bare-bones static-site generator, powered by Vite. It currently supports just React. Features include:
+Impala is a bare-bones static-site generator, powered by [Vite](https://github.com/vitejs/vite). It currently supports just [React](https://github.com/facebook/react). Features include:
 
 - SSG-only, MPA-only. It's iMPAla, not iSPAla.
-- File-based routing, with a syntax like Astro and Solid Start
+- File-based routing, with a syntax like [Astro](https://github.com/withastro/astro) and [Solid Start](https://github.com/solidjs/solid-start)
 - Static and dynamic routes
-- Astro and Next.js-inspired data fetching in `getStaticPaths`, and `getRouteData`
+- Astro and [Next.js](https://github.com/vercel/next.js/)-inspired data fetching in `getStaticPaths`, and `getRouteData`
 - Route-level code-splitting
 - Optionally JS-free
 
@@ -23,7 +23,7 @@ See the demo site for now. Dev mode is not implemented yet.
 
 ### Why did you build this?
 
-Mainly to learn, but also because there's no statically-rendered create-react-app equivalent. I often want a simple React site with static rendering but no SSR. Astro is awesome, but I want something that's just React.
+Mainly to learn, but also because there's no statically-rendered [create-react-app](https://github.com/facebook/create-react-app) equivalent. I often want a simple React site with static rendering but no SSR. Astro is awesome, but I want something that's just React.
 
 ### Should I use this in production?
 
