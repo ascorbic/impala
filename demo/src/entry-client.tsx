@@ -1,5 +1,5 @@
-import { clientBootstrap, RouteModules } from "@impalajs/react/client";
+import { clientBootstrap, RouteModule } from "@impalajs/react/client";
 
-const modules = import.meta.glob("./routes/*.tsx") as RouteModules;
+const modules = import.meta.glob<RouteModule>("./routes/*.tsx");
 
 clientBootstrap(modules);

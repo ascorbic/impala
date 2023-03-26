@@ -1,7 +1,9 @@
-import { renderToPipeableStream } from "react-dom/server";
-import type { ElementType } from "react";
+import { renderToPipeableStream, renderToStaticMarkup } from "react-dom/server";
+import { ElementType, useContext } from "react";
 import type { Context, RouteModule } from "@impalajs/core";
 import { Writable, WritableOptions } from "node:stream";
+import viteReact from "@vitejs/plugin-react";
+import { HeadContext } from "./head-context";
 
 class StringResponse extends Writable {
   private buffer: string;
@@ -29,6 +31,11 @@ class StringResponse extends Writable {
   }
 }
 
+function HeadContent() {
+  const headProvider = useContext(HeadContext);
+  return <>{...headProvider.getHead()}</>;
+}
+
 export async function render(
   context: Context,
   mod: () => Promise<RouteModule<ElementType>>,
@@ -40,7 +47,8 @@ export async function render(
 
   const { pipe } = renderToPipeableStream(<Page {...context} />, {
     bootstrapModules,
-    bootstrapScriptContent: `window.___CONTEXT=${JSON.stringify(context)};`,
+    bootstrapScriptContent: `window.___CONTEXT=${JSON.stringify(context)};
+    `,
     onAllReady() {
       pipe(response);
     },
@@ -49,5 +57,9 @@ export async function render(
     },
   });
 
-  return await response.getData();
+  const body = await response.getData();
+
+  const head = renderToStaticMarkup(<HeadContent />);
+
+  return { body, head };
 }

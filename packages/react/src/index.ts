@@ -1,7 +1,10 @@
-import type { DataModule, ModuleImports, RouteModule } from "@impalajs/core";
+import type {
+  DataModule,
+  ModuleImports,
+  RouteModule as CoreRouteModule,
+} from "@impalajs/core";
 import type { ElementType } from "react";
+export type RouteModule = CoreRouteModule<ElementType>;
+export type { DataModule };
 
 export * from "./entry-server";
-
-export type RouteModules = ModuleImports<RouteModule<ElementType>>;
-export type DataModules = ModuleImports<DataModule>;

@@ -21,14 +21,21 @@ export async function prerender(root: string) {
   }
   const manifest = JSON.parse(await fs.readFile(manifestPath, "utf-8"));
 
-  const main = manifest["src/entry-client.tsx"].file;
-
   const { render, routeModules, dataModules } = (await import(
     path.resolve(root, "./dist/server/entry-server.js")
   )) as ServerEntry;
 
+  const template = await fs.readFile(
+    path.resolve(root, "./dist/static/index.html"),
+    "utf-8"
+  );
+
   async function prerenderRoute(context: Context, mod: RouteModuleFunction) {
-    const appHtml = await render(context, mod, [main]);
+    const { body, head } = await render(context, mod, []);
+
+    const appHtml = template
+      .replace("<!--head-content-->", head)
+      .replace("<!--app-content-->", body);
 
     const filePath = `dist/static${
       context.url === "/" ? "/index" : context.url

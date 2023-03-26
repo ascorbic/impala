@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import { Head } from "@impalajs/react/head";
 
 interface AppProps {
   title: string;
@@ -10,11 +11,12 @@ export const App: React.FC<React.PropsWithChildren<AppProps>> = ({
   title,
 }) => {
   return (
-    <html>
-      <head>
+    <>
+      <Head>
         <title>{title}</title>
-      </head>
-      <body>{children}</body>
-    </html>
+        <meta name="description" content="This is a demo" />
+      </Head>
+      {children}
+    </>
   );
 };
