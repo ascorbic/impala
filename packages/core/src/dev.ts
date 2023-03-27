@@ -4,6 +4,7 @@ import { routerForModules } from "./core";
 import { ServerEntry } from "./types";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { renderLinkTagsForModuleNode } from "./shared";
 
 function isDynamicRoute(route: string) {
   return route.includes("/[");
@@ -114,11 +115,14 @@ export async function createServer() {
       };
 
       const { body, head } = await render(context, mod, []);
-
+      const node = vite.moduleGraph.urlToModuleMap.get(
+        result.chunk.replace(/^\.\//, "/src/")
+      );
+      const links = node ? renderLinkTagsForModuleNode(node) : "";
       const transformed = await vite.transformIndexHtml(
         req.originalUrl,
         template
-          .replace("<!--head-content-->", head)
+          .replace("<!--head-content-->", head + links)
           .replace("<!--app-content-->", body)
       );
 

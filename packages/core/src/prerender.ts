@@ -2,6 +2,7 @@ import { promises as fs, existsSync } from "node:fs";
 import path from "node:path";
 import { compile } from "path-to-regexp";
 import { convertPathToPattern } from "./core";
+import { renderLinkTagsForManifestChunk } from "./shared";
 import { Context, RouteModuleFunction, ServerEntry } from "./types";
 
 function isDynamicRoute(route: string) {
@@ -21,11 +22,27 @@ export async function prerender(root: string) {
     "utf-8"
   );
 
+  const manifestPath = path.resolve(root, "dist/static/manifest.json");
+  if (!existsSync(manifestPath)) {
+    console.error(
+      `No manifest found at ${manifestPath}. Did you build the app?`
+    );
+    return;
+  }
+  const manifest = JSON.parse(await fs.readFile(manifestPath, "utf-8"));
+
+  const assetMap = new Map<string, string[]>();
+
   async function prerenderRoute(context: Context, mod: RouteModuleFunction) {
     const { body, head } = await render(context, mod, []);
+    const linkTags = renderLinkTagsForManifestChunk(
+      manifest,
+      context.chunk.replace(/^\.\//, "src/"),
+      assetMap
+    );
 
     const appHtml = template
-      .replace("<!--head-content-->", head)
+      .replace("<!--head-content-->", head + linkTags)
       .replace("<!--app-content-->", body);
 
     const filePath = `dist/static${
