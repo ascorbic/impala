@@ -1,0 +1,19 @@
+{
+    "packages": {
+        "packages/core": {
+            "release-as": "0.0.5"
+        },
+        "packages/react": {
+            "release-as": "0.0.5"
+        },
+        "packages/create-impala": {
+            "release-as": "0.0.5"
+        }
+    },
+    "plugins": [
+        "node-workspace"
+    ],
+    "bump-minor-pre-major": true,
+    "bump-patch-for-minor-pre-major": true,
+    "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
+}
