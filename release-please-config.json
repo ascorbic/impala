@@ -1,8 +1,14 @@
 {
     "packages": {
-        "packages/core": {},
-        "packages/react": {},
-        "packages/create-impala": {}
+        "packages/core": {
+            "release-as": "0.0.5"
+        },
+        "packages/react": {
+            "release-as": "0.0.5"
+        },
+        "packages/create-impala": {
+            "release-as": "0.0.5"
+        }
     },
     "plugins": [
         "node-workspace"
