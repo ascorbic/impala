@@ -1,0 +1,24 @@
+{
+  "name": "preact",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "impala dev",
+    "build:server": "vite build --ssr",
+    "build:client": "vite build",
+    "build:prerender": "impala prerender",
+    "build": "npm run build:client && npm run build:server && npm run build:prerender",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@impalajs/core": "latest",
+    "@impalajs/preact": "latest",
+    "preact": "^10.13.0"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.5.0",
+    "typescript": "^4.9.3",
+    "vite": "^4.2.0"
+  }
+}

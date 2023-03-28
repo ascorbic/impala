@@ -34,11 +34,24 @@ export async function createImpala() {
     return;
   }
 
+  const framework = await select({
+    message: "Which framework would you like to use?",
+    options: [
+      { value: "react", label: "React" },
+      { value: "preact", label: "Preact" },
+    ],
+  });
+
+  if (isCancel(language)) {
+    outro("Cancelled");
+    return;
+  }
+
   const s = spinner();
 
   s.start("Setting up your project...");
 
-  const emitter = degit(`ascorbic/impala/templates/react-${language}`, {
+  const emitter = degit(`ascorbic/impala/templates/${framework}-${language}`, {
     cache: false,
   });
 
