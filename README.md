@@ -4,9 +4,9 @@
 <img src="https://user-images.githubusercontent.com/213306/227727009-a4dc391f-efb1-4489-ad73-c3d3a327704a.png" width="100" />
 </p>
 
-## Very simple Vite static site generator
+## Very simple React and Preact static site generator
 
-Impala is a bare-bones static-site generator, powered by [Vite](https://github.com/vitejs/vite). It currently supports just [React](https://github.com/facebook/react). Features include:
+Impala is a bare-bones static-site framework, powered by [Vite](https://github.com/vitejs/vite). It currently supports [React](https://react.dev) and [Preact](https://preactjs.com/). Features include:
 
 - SSG-only, MPA-only. It's iMPAla, not iSPAla.
 - File-based routing, with a syntax like [Astro](https://github.com/withastro/astro) and [Solid Start](https://github.com/solidjs/solid-start)
@@ -37,7 +37,7 @@ Mainly to learn, but also because there's no statically-rendered [create-react-a
 
 ### Should I use this in production?
 
-Dear god no. Don't use it at all yet. It's not even alpha.
+Dear god no. It's barely alpha.
 
 ### Does it support SSR
 
