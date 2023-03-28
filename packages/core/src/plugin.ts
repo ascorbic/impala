@@ -13,10 +13,9 @@ export default function plugin(): Plugin {
       config.build ||= {};
       if (config.build.ssr) {
         if (config.build.ssr === true) {
-          config.build.ssr = "src/entry-server.tsx";
+          config.build.ssr = "src/entry-server";
         }
         config.build.outDir = "dist/server";
-        console.log("SSR", config.build);
       } else {
         config.build.outDir = "dist/static";
         config.build.ssrManifest = true;
