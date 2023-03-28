@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.6](https://github.com/ascorbic/impala/compare/create-impala-v0.0.5...create-impala-v0.0.6) (2023-03-28)
+
+
+### Features
+
+* add preact support ([#9](https://github.com/ascorbic/impala/issues/9)) ([ef71048](https://github.com/ascorbic/impala/commit/ef710486657819cbf6addaa1aaff671931b5ed4f))
+
 ## 0.0.5 (2023-03-28)
 
 

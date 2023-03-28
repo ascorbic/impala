@@ -5,6 +5,13 @@
 
 ### Features
 
+* add preact support ([#9](https://github.com/ascorbic/impala/issues/9)) ([ef71048](https://github.com/ascorbic/impala/commit/ef710486657819cbf6addaa1aaff671931b5ed4f))
+
+## 0.0.5 (2023-03-28)
+
+
+### Features
+
 * add dev server ([#2](https://github.com/ascorbic/impala/issues/2)) ([bab917a](https://github.com/ascorbic/impala/commit/bab917a28df70d9df691f7d1db61bf6e140b7acb))
 * **create-impala:** add create-impala cli ([d40b61c](https://github.com/ascorbic/impala/commit/d40b61c469223bc88d62fce156790ecaf2090e49))
 
