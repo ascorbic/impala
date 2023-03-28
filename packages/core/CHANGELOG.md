@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.6](https://github.com/ascorbic/impala/compare/core-v0.0.5...core-v0.0.6) (2023-03-28)
+
+
+### Bug Fixes
+
+* correctly add links to head in dev mode ([#12](https://github.com/ascorbic/impala/issues/12)) ([5540a3d](https://github.com/ascorbic/impala/commit/5540a3d54edb608bba33e4023650e3eef63e3493))
+
 ## 0.0.5 (2023-03-28)
 
 
