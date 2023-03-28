@@ -34,6 +34,21 @@ export const findAssetsInManifest = (
   return traverse(id);
 };
 
+export const findAssetsInModuleNode = (moduleNode: ModuleNode) => {
+  const seen = new Set<string>();
+  function traverse(node: ModuleNode): Array<string> {
+    if (seen.has(node.url)) {
+      return [];
+    }
+
+    const imports = [...node.importedModules].flatMap(traverse) || [];
+    imports.push(node.url);
+    seen.add(node.url);
+    return Array.from(new Set(imports));
+  }
+  return traverse(moduleNode);
+};
+
 /**
  * Traverses the module graph and generates link tags to either import or preload asets
  */
@@ -50,8 +65,10 @@ export function renderLinkTagsForManifestChunk(
  * Finds all the imported modules for a given module and generates link tags to
  * either import or preload them.
  */
-export const renderLinkTagsForModuleNode = (node: ModuleNode): string =>
-  [...node.importedModules].map((mod) => renderLinkTag(mod.url)).join("");
+export const renderLinkTagsForModuleNode = (node: ModuleNode): string => {
+  const assets = findAssetsInModuleNode(node);
+  return assets.map(renderLinkTag).join("");
+};
 
 interface LinkProps {
   rel: string;
