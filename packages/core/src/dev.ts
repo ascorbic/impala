@@ -64,7 +64,7 @@ export async function createServer() {
       );
 
       const { render, routeModules, dataModules } = (await vite.ssrLoadModule(
-        "/src/entry-server.tsx"
+        "/src/entry-server"
       )) as ServerEntry;
 
       const router = routerForModules(routeModules);

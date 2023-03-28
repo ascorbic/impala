@@ -1,0 +1,25 @@
+{
+  "name": "impala-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "impala dev",
+    "build:server": "vite build --ssr",
+    "build:client": "vite build",
+    "build:prerender": "impala prerender",
+    "build": "npm run build:client && npm run build:server && npm run build:prerender",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@impalajs/core": "latest",
+    "@impalajs/react": "latest",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^3.1.0",
+    "typescript": "^4.9.3",
+    "vite": "^4.2.0"
+  }
+}

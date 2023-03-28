@@ -2,3 +2,4 @@ packages:
   - templates/*
   - packages/*
   - demo
+  - scripts
