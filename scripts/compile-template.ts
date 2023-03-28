@@ -215,6 +215,7 @@ async function generateJsTemplate(templateBasename: string) {
   await transpileProject(jsTemplate);
 }
 
-const baseDir = path.join(__dirname, "..", "templates", "react");
-
-generateJsTemplate(baseDir);
+for (const framework of ["react", "preact"]) {
+  const baseDir = path.join(__dirname, "..", "templates", framework);
+  generateJsTemplate(baseDir);
+}
