@@ -122,7 +122,29 @@ importers:
         specifier: ^2.8.7
         version: 2.8.7
 
-  templates/preact:
+  templates/preact-js:
+    dependencies:
+      '@impalajs/core':
+        specifier: latest
+        version: link:../../packages/core
+      '@impalajs/preact':
+        specifier: latest
+        version: link:../../packages/preact
+      preact:
+        specifier: ^10.13.0
+        version: 10.13.2
+    devDependencies:
+      '@preact/preset-vite':
+        specifier: ^2.5.0
+        version: 2.5.0(@babel/core@7.21.3)(preact@10.13.2)(vite@4.2.1)
+      typescript:
+        specifier: ^4.9.3
+        version: 4.9.5
+      vite:
+        specifier: ^4.2.0
+        version: 4.2.1(@types/node@18.15.7)
+
+  templates/preact-ts:
     dependencies:
       '@impalajs/core':
         specifier: latest
