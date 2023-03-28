@@ -2,7 +2,7 @@
     "packages": {
         "packages/core": {},
         "packages/preact": {
-            "release-as": "0.0.6"
+            "release-as": "0.0.5"
         },
         "packages/react": {},
         "packages/create-impala": {}
