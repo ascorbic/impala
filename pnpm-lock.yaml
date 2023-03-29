@@ -121,6 +121,9 @@ importers:
 
   scripts:
     devDependencies:
+      '@types/node':
+        specifier: ^18.15.7
+        version: 18.15.7
       '@types/prettier':
         specifier: ^2.7.2
         version: 2.7.2

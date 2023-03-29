@@ -11,6 +11,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@types/node": "^18.15.7",
     "@types/prettier": "^2.7.2",
     "fast-glob": "^3.2.12",
     "prettier": "^2.8.7",
