@@ -1,5 +1,5 @@
 {
-  "name": "preact",
+  "name": "impala-app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -12,11 +12,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@impalajs/core": "latest",
-    "@impalajs/preact": "latest",
+    "@impalajs/core": "*",
+    "@impalajs/preact": "*",
     "preact": "^10.13.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0-0",
     "@preact/preset-vite": "^2.5.0",
     "typescript": "^4.9.3",
     "vite": "^4.2.0"

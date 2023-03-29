@@ -12,8 +12,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@impalajs/core": "latest",
-    "@impalajs/react": "latest",
+    "@impalajs/core": "*",
+    "@impalajs/react": "*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
