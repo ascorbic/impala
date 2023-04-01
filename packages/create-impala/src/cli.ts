@@ -42,7 +42,7 @@ export async function createImpala() {
     ],
   });
 
-  if (isCancel(language)) {
+  if (isCancel(framework)) {
     outro("Cancelled");
     return;
   }
