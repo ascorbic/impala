@@ -3,7 +3,8 @@
         "packages/core": {},
         "packages/preact": {},
         "packages/react": {},
-        "packages/create-impala": {}
+        "packages/create-impala": {},
+        "packages/vite-plugin-rsc": {}
     },
     "plugins": [
         "node-workspace"

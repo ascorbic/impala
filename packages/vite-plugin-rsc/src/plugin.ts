@@ -74,7 +74,7 @@ export default function plugin({
 }: {
   serverDist?: string;
   clientDist?: string;
-}): Plugin {
+} = {}): Plugin {
   const clientPragma = "use client";
   const serverPragma = "use server";
   let externals = new Set<string>();
@@ -153,10 +153,15 @@ export default function plugin({
           );
           externals.add(bundlePath.href);
           if (manifest[localId]) {
-            const exports = getExports(ast);
+            // TODO: find out how named exports are handled
+            // const exports = getExports(ast);
+            const exports = ["default"];
             const exportProxies = exports
               .map((name) => {
-                const symbolName = `${manifest[localId].file}#${name}`;
+                const symbolName =
+                  name === "default"
+                    ? manifest[localId].file
+                    : `${manifest[localId].file}#${name}`;
                 bundleMap.set(symbolName, {
                   id: symbolName,
                   chunks: [],
@@ -199,7 +204,7 @@ export default function plugin({
       if (isBuild && isSsr) {
         this.emitFile({
           type: "asset",
-          fileName: serverBundleMapFilename,
+          fileName: clientBundleMapFilename,
           source: JSON.stringify(Object.fromEntries(bundleMap)),
         });
       }
