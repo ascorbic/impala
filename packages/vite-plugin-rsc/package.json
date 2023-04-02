@@ -1,6 +1,6 @@
 {
   "name": "@impalajs/vite-plugin-extract-server-components",
-  "version": "0.0.6",
+  "version": "0.0.0",
   "description": "",
   "scripts": {
     "build": "tsup src/plugin.ts --format esm --dts --clean"

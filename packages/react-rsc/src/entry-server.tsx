@@ -1,46 +1,16 @@
-import { renderToStaticMarkup } from "react-dom/server";
 // @ts-ignore
-import * as ReactServerDom from "react-server-dom-webpack/server.node";
+import * as ReactServerDom from "react-dom/server.browser";
 // @ts-ignore
-import * as ReactClient from "react-server-dom-webpack/client.node";
+import * as ReactServerDomWebpack from "react-server-dom-webpack/server.browser";
+// @ts-ignore
+import * as ReactClient from "react-server-dom-webpack/client.browser";
 
-import { ElementType, useContext } from "react";
+import { ElementType } from "react";
 import type { Context, RouteModule } from "@impalajs/core";
-import { Writable, WritableOptions } from "node:stream";
-import { HeadContext } from "./head-context";
+import consumers from "node:stream/consumers";
 import { promises as fs } from "node:fs";
-
-class StringResponse extends Writable {
-  private buffer: string;
-  private responseData: Promise<string>;
-  constructor(options?: WritableOptions) {
-    super(options);
-    this.buffer = "";
-    this.responseData = new Promise((resolve, reject) => {
-      this.on("finish", () => resolve(this.buffer));
-      this.on("error", reject);
-    });
-  }
-
-  _write(
-    chunk: any,
-    encoding: BufferEncoding,
-    callback: (error?: Error | null) => void
-  ): void {
-    console.log("chunk", chunk);
-    this.buffer += chunk;
-    callback();
-  }
-
-  getData(): Promise<string> {
-    return this.responseData;
-  }
-}
-
-function HeadContent() {
-  const headProvider = useContext(HeadContext);
-  return <>{...headProvider.getHead()}</>;
-}
+import { dirname } from "node:path";
+import { join } from "node:path";
 
 export async function render(
   context: Context,
@@ -49,29 +19,36 @@ export async function render(
 ) {
   // @ts-ignore
   const { default: bundleMapPath } = await import("virtual:client-bundle-map");
-  console.log(bundleMapPath);
+  // @ts-ignore
+  const { default: serverMapPath } = await import("virtual:server-bundle-map");
+
   const bundleMap = JSON.parse(await fs.readFile(bundleMapPath, "utf-8"));
-  console.log(bundleMap);
+
+  const staticDir = dirname(serverMapPath);
+
+  (globalThis as any).__webpack_require__ = async (id: string) =>
+    import(join(staticDir, id));
+
   const { default: Page } = await mod();
 
-  const response = new StringResponse();
-
-  const stream = ReactServerDom.renderToPipeableStream(
+  const flightStream = ReactServerDomWebpack.renderToReadableStream(
     <Page {...context} />,
-    {
-      bootstrapModules,
-      bootstrapScriptContent: `window.___CONTEXT=${JSON.stringify(context)};`,
-    },
     bundleMap
   );
 
-  console.log(stream);
+  const fizzContent = await ReactClient.createFromReadableStream(
+    flightStream,
+    bundleMap
+  );
+  const stream = await ReactServerDom.renderToReadableStream(fizzContent, {
+    bootstrapModules,
+    bootstrapScriptContent: `window.___CONTEXT=${JSON.stringify(context)};`,
+  });
 
-  const something = ReactClient.createFromNodeStream(stream, bundleMap);
-  console.log(something);
-  const body = await response.getData();
+  await stream.allReady;
 
-  const head = renderToStaticMarkup(<HeadContent />);
+  const body = await consumers.text(stream);
 
-  return { body, head };
+  console.log(body);
+  return { body, head: {} };
 }
