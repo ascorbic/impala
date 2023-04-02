@@ -30,6 +30,10 @@ const hasPragma = (ast: ASTNode, statement: string) =>
     );
   });
 
+/**
+ * Finds all the named and default exports of a module
+ */
+
 const getExports = (ast: ASTNode) => {
   const exports: Array<string> = [];
   ast.body?.forEach((node) => {
@@ -76,7 +80,7 @@ export default function plugin({
   clientDist?: string;
 }): Plugin {
   const clientPragma = "use client";
-  const serverPragma = "use server";
+  // const serverPragma = "use server";
   let externals = new Set<string>();
   let config: ResolvedConfig;
   let isSsr: boolean;
