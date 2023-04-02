@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.7](https://github.com/ascorbic/impala/compare/create-impala-v0.0.6...create-impala-v0.0.7) (2023-04-02)
+
+
+### Bug Fixes
+
+* Ensure users can exit from framework prompt step ([#16](https://github.com/ascorbic/impala/issues/16)) ([7c84501](https://github.com/ascorbic/impala/commit/7c84501bf5a06d5672fb95d10ade16bdec8ff4b7))
+
 ## [0.0.6](https://github.com/ascorbic/impala/compare/create-impala-v0.0.5...create-impala-v0.0.6) (2023-03-28)
 
 

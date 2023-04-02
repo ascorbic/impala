@@ -1,6 +1,6 @@
 {
   "name": "create-impala",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "",
   "bin": {
     "create-impala": "create-impala.js"
