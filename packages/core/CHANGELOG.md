@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.7](https://github.com/ascorbic/impala/compare/core-v0.0.6...core-v0.0.7) (2023-04-05)
+
+
+### Bug Fixes
+
+* don't override custom vite config ([#18](https://github.com/ascorbic/impala/issues/18)) ([5dc148a](https://github.com/ascorbic/impala/commit/5dc148aba2575e11fd83d2730d14d0c8ad9fb926))
+
 ## [0.0.6](https://github.com/ascorbic/impala/compare/core-v0.0.5...core-v0.0.6) (2023-03-28)
 
 
