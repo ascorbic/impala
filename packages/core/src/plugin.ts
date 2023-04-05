@@ -11,17 +11,18 @@ export default function plugin(): Plugin {
 
     config(config) {
       config.build ||= {};
+      config.build.manifest = true;
+
       if (config.build.ssr) {
         if (config.build.ssr === true) {
           config.build.ssr = "src/entry-server";
         }
-        config.build.outDir = "dist/server";
+        config.build.outDir ||= "dist/server";
       } else {
-        config.build.outDir = "dist/static";
+        config.build.outDir ||= "dist/static";
         config.build.ssrManifest = true;
-        config.build.manifest = true;
         config.build.rollupOptions ||= {};
-        config.build.rollupOptions.input = "index.html";
+        config.build.rollupOptions.input ||= "index.html";
       }
     },
 
