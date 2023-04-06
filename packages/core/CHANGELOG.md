@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.9](https://github.com/ascorbic/impala/compare/core-v0.0.8...core-v0.0.9) (2023-04-06)
+
+
+### Bug Fixes
+
+* move assets to context ([#22](https://github.com/ascorbic/impala/issues/22)) ([e467cd5](https://github.com/ascorbic/impala/commit/e467cd53e3eab89f56c3a694b8f31fa2a5478272))
+
 ## [0.0.8](https://github.com/ascorbic/impala/compare/core-v0.0.7...core-v0.0.8) (2023-04-06)
 
 
