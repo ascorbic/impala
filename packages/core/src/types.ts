@@ -9,6 +9,7 @@ export interface Context<TData = unknown, TRouteData = unknown> {
   data?: TData;
   routeData?: TRouteData;
   params?: Record<string, string>;
+  assets?: Array<string>;
 }
 
 export interface RouteModule<TElement = HTMLElement> {
@@ -43,8 +44,7 @@ export interface ServerEntry<TElement = HTMLElement> {
   render(
     context: Context,
     mod: RouteModuleFunction<TElement>,
-    bootstrapModules?: Array<string>,
-    bootstrapAssets?: Array<string>
+    bootstrapModules?: Array<string>
   ): Promise<{
     body: string;
     head: string | false;
