@@ -43,10 +43,11 @@ export interface ServerEntry<TElement = HTMLElement> {
   render(
     context: Context,
     mod: RouteModuleFunction<TElement>,
-    bootstrapModules?: Array<string>
+    bootstrapModules?: Array<string>,
+    bootstrapAssets?: Array<string>
   ): Promise<{
     body: string;
-    head: string;
+    head: string | false;
   }>;
 }
 

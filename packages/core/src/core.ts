@@ -1,6 +1,6 @@
 import { ModuleImports, RouteModule } from "./types";
 import { createRouter, RadixRouter } from "radix3";
-
+export * from "./shared";
 export * from "./types";
 
 export function convertPathToPattern(input: string): string {

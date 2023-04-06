@@ -3,12 +3,17 @@ import { ModuleNode, Manifest } from "vite";
 
 /**
  * Traverses the module graph and collects assets for a given chunk
+ *
+ * @param manifest Client manifest
+ * @param id Chunk id
+ * @param assetMap Cache of assets
+ * @returns Array of asset URLs
  */
 export const findAssetsInManifest = (
   manifest: Manifest,
   id: string,
   assetMap: Map<string, Array<string>> = new Map()
-) => {
+): Array<string> => {
   function traverse(id: string): Array<string> {
     const cached = assetMap.get(id);
     if (cached) {
@@ -70,6 +75,10 @@ export const renderLinkTagsForModuleNode = (node: ModuleNode): string => {
   return assets.map(renderLinkTag).join("");
 };
 
+export function renderAssetLinkTags(assets: Array<string>): string {
+  return assets.map((asset) => renderLinkTag(`/${asset}`)).join("");
+}
+
 interface LinkProps {
   rel: string;
   as?: string;
@@ -108,7 +117,7 @@ const linkPropsMap: Map<string, LinkProps> = new Map([
  * everything else. It uses the file extension to determine the type.
  */
 
-function renderLinkTag(file: string) {
+export function renderLinkTag(file: string) {
   const ext = basename(file).split(".").pop();
   if (!ext) {
     return "";
