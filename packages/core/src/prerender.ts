@@ -38,23 +38,20 @@ export async function prerender(root: string) {
   const assetMap = new Map<string, string[]>();
 
   async function prerenderRoute(context: Context, mod: RouteModuleFunction) {
-    const assets = findAssetsInManifest(
-      manifest,
-      context.chunk.replace(/^\.\//, "src/"),
-      assetMap
-    );
+    const { body, head } = await render(context, mod, []);
 
-    const { body, head } = await render(context, mod, [], assets);
-
-    let headContent = "";
-
-    if (head !== false) {
-      headContent = renderAssetLinkTags(assets) + head;
-    }
-
-    const appHtml = template
-      .replace("<!--head-content-->", headContent)
-      .replace("<!--app-content-->", body);
+    // If the render function returns false for head, it means that the
+    // body is the full document, so we don't need to wrap it in the
+    // template.
+    const appHtml =
+      head === false
+        ? body
+        : template
+            .replace(
+              "<!--head-content-->",
+              renderAssetLinkTags(context.assets ?? []) + head
+            )
+            .replace("<!--app-content-->", body);
 
     const filePath = `dist/static${
       context.path === "/" ? "/index" : context.path
@@ -87,7 +84,11 @@ export async function prerender(root: string) {
 
       const routeData = await getRouteData?.();
       const routePattern = convertPathToPattern(route) || "/";
-
+      const assets = findAssetsInManifest(
+        manifest,
+        route.replace(/^\.\//, "src/"),
+        assetMap
+      );
       if (isDynamicRoute(route)) {
         console.log(`pre-rendering dynamic route: ${route}`);
         if (!dataMod) {
@@ -116,6 +117,7 @@ export async function prerender(root: string) {
               console.error(`Invalid path params for route: ${route}`);
               return;
             }
+
             return prerenderRoute(
               {
                 path,
@@ -123,6 +125,7 @@ export async function prerender(root: string) {
                 chunk: route,
                 params: pathInfo.params,
                 data: pathInfo.data,
+                assets,
               },
               mod
             );
@@ -130,7 +133,7 @@ export async function prerender(root: string) {
         );
       } else {
         await prerenderRoute(
-          { path: routePattern, chunk: route, routeData },
+          { path: routePattern, chunk: route, assets, routeData },
           mod
         );
       }
