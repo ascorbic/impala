@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.8](https://github.com/ascorbic/impala/compare/core-v0.0.7...core-v0.0.8) (2023-04-06)
+
+
+### Features
+
+* pass assets to render functions ([#20](https://github.com/ascorbic/impala/issues/20)) ([f7792c2](https://github.com/ascorbic/impala/commit/f7792c2a426357b1d16993b878589e638ec68df8))
+
 ## [0.0.7](https://github.com/ascorbic/impala/compare/core-v0.0.6...core-v0.0.7) (2023-04-05)
 
 
