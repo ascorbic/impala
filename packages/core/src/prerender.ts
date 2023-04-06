@@ -2,7 +2,11 @@ import { promises as fs, existsSync } from "node:fs";
 import path from "node:path";
 import { compile } from "path-to-regexp";
 import { convertPathToPattern } from "./core";
-import { renderLinkTagsForManifestChunk } from "./shared";
+import {
+  findAssetsInManifest,
+  renderAssetLinkTags,
+  renderLinkTagsForManifestChunk,
+} from "./shared";
 import { Context, RouteModuleFunction, ServerEntry } from "./types";
 
 function isDynamicRoute(route: string) {
@@ -34,15 +38,22 @@ export async function prerender(root: string) {
   const assetMap = new Map<string, string[]>();
 
   async function prerenderRoute(context: Context, mod: RouteModuleFunction) {
-    const { body, head } = await render(context, mod, []);
-    const linkTags = renderLinkTagsForManifestChunk(
+    const assets = findAssetsInManifest(
       manifest,
       context.chunk.replace(/^\.\//, "src/"),
       assetMap
     );
 
+    const { body, head } = await render(context, mod, [], assets);
+
+    let headContent = "";
+
+    if (head !== false) {
+      headContent = renderAssetLinkTags(assets) + head;
+    }
+
     const appHtml = template
-      .replace("<!--head-content-->", head + linkTags)
+      .replace("<!--head-content-->", headContent)
       .replace("<!--app-content-->", body);
 
     const filePath = `dist/static${
