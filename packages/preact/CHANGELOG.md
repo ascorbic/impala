@@ -18,6 +18,12 @@
   * dependencies
     * @impalajs/core bumped to 0.0.8
 
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @impalajs/core bumped to 0.0.9
+
 ## 0.0.5 (2023-03-28)
 
 
