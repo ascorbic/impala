@@ -45,10 +45,10 @@ export const findAssetsInModuleNode = (moduleNode: ModuleNode) => {
     if (seen.has(node.url)) {
       return [];
     }
+    seen.add(node.url);
 
     const imports = [...node.importedModules].flatMap(traverse) || [];
     imports.push(node.url);
-    seen.add(node.url);
     return Array.from(new Set(imports));
   }
   return traverse(moduleNode);
