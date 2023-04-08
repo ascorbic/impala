@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.10](https://github.com/ascorbic/impala/compare/core-v0.0.9...core-v0.0.10) (2023-04-07)
+
+
+### Bug Fixes
+
+* avoid "max call stack" error in asset traversal ([#24](https://github.com/ascorbic/impala/issues/24)) ([c547af6](https://github.com/ascorbic/impala/commit/c547af64f1a810a3a9b26a23fd6f951bddc29f67))
+
 ## [0.0.9](https://github.com/ascorbic/impala/compare/core-v0.0.8...core-v0.0.9) (2023-04-06)
 
 
