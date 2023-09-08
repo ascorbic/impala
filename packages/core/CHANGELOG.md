@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.11](https://github.com/ascorbic/impala/compare/core-v0.0.10...core-v0.0.11) (2023-09-08)
+
+
+### Bug Fixes
+
+* ignore query string when routing ([#27](https://github.com/ascorbic/impala/issues/27)) ([d9701ae](https://github.com/ascorbic/impala/commit/d9701ae17393644fe5d5dae489760497777b77c1))
+
 ## [0.0.10](https://github.com/ascorbic/impala/compare/core-v0.0.9...core-v0.0.10) (2023-04-07)
 
 
