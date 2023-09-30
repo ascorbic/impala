@@ -34,12 +34,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install
         if: ${{ steps.release.outputs.releases_created }}
-      - run: pnpm -r build
+      - run: pnpm --filter "@impalajs/*" publish
         if: ${{ steps.release.outputs.releases_created }}
       - name: Authenticate pnpm
         run: pnpm config set '//registry.npmjs.org/:_authToken' "${NPM_AUTH_TOKEN}"
         if: ${{ steps.release.outputs.releases_created }}
         env:
           NPM_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-      - run: pnpm -r publish
+      - run: pnpm --filter "@impalajs/*" publish
         if: ${{ steps.release.outputs.releases_created }}
