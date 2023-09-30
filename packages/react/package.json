@@ -1,6 +1,6 @@
 {
   "name": "@impalajs/react",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "",
   "scripts": {
     "build": "tsup src/index.ts src/client.tsx src/head.tsx --format cjs,esm --dts --clean"
