@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.12](https://github.com/ascorbic/impala/compare/core-v0.0.11...core-v0.0.12) (2023-09-30)
+
+
+### Bug Fixes
+
+* **core:** use originalUrl for dev routing ([#29](https://github.com/ascorbic/impala/issues/29)) ([4fdd115](https://github.com/ascorbic/impala/commit/4fdd115a1c8c564ee144ce7a16895b9c6dd92636))
+
 ## [0.0.11](https://github.com/ascorbic/impala/compare/core-v0.0.10...core-v0.0.11) (2023-09-08)
 
 
