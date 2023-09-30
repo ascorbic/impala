@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 importers:
 
   .: {}
@@ -143,10 +147,10 @@ importers:
   templates/preact-js:
     dependencies:
       '@impalajs/core':
-        specifier: '*'
+        specifier: latest
         version: link:../../packages/core
       '@impalajs/preact':
-        specifier: '*'
+        specifier: latest
         version: link:../../packages/preact
       preact:
         specifier: ^10.13.0
@@ -168,10 +172,10 @@ importers:
   templates/preact-ts:
     dependencies:
       '@impalajs/core':
-        specifier: '*'
+        specifier: latest
         version: link:../../packages/core
       '@impalajs/preact':
-        specifier: '*'
+        specifier: latest
         version: link:../../packages/preact
       preact:
         specifier: ^10.13.0
@@ -193,10 +197,10 @@ importers:
   templates/react-js:
     dependencies:
       '@impalajs/core':
-        specifier: '*'
+        specifier: latest
         version: link:../../packages/core
       '@impalajs/react':
-        specifier: '*'
+        specifier: latest
         version: link:../../packages/react
       react:
         specifier: ^18.2.0
@@ -218,10 +222,10 @@ importers:
   templates/react-ts:
     dependencies:
       '@impalajs/core':
-        specifier: '*'
+        specifier: latest
         version: link:../../packages/core
       '@impalajs/react':
-        specifier: '*'
+        specifier: latest
         version: link:../../packages/react
       react:
         specifier: ^18.2.0
