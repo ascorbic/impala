@@ -69,7 +69,7 @@ export async function createServer() {
 
       const router = routerForModules(routeModules);
 
-      const result = router.lookup(req.originalUrl);
+      const result = router.lookup(req.baseUrl);
 
       if (!result) {
         res.status(404).end("404");
