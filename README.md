@@ -34,11 +34,7 @@ See the demo site for more.
 
 ### Why did you build this?
 
-Mainly to learn, but also because there's no statically-rendered [create-react-app](https://github.com/facebook/create-react-app) equivalent. I often want a simple React site with static rendering but no SSR. Astro is awesome, but I want something that's just React.
-
-### Should I use this in production?
-
-Dear god no. It's barely alpha.
+Mainly to learn, but also because there's no statically-rendered [create-react-app](https://github.com/facebook/create-react-app) equivalent. I often want a simple React site with static rendering but no SSR. Astro is awesome, but I want something that's more vanilla React.
 
 ### Does it support SSR
 
@@ -47,10 +43,6 @@ Deliberately not. If you want SSR, use Astro.
 ### Does it support client-side navigation?
 
 Deliberately not. If you want client-side navigation, use one of the many other SPA frameworks.
-
-### Does it support other frontend frameworks?
-
-I started with React because it's the one most obviously lacking a basic SSG, but the React-specific code is in a separate package and I want to add support for other frameworks.
 
 ## License
 
