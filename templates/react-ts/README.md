@@ -16,4 +16,4 @@ When you're ready to build for production, run:
 npm run build
 ```
 
-See [the GitHub repo](https://githb.com/ascorbic/impala) for more help.
+See [the GitHub repo](https://github.com/ascorbic/impala) for more help.
