@@ -1,6 +1,7 @@
 import { intro, outro, spinner, text, isCancel, select } from "@clack/prompts";
 import degit from "degit";
-import { existsSync } from "node:fs";
+import { existsSync, promises as fs } from "node:fs";
+import { join } from "node:path";
 import color from "picocolors";
 
 export async function createImpala() {
@@ -65,5 +66,11 @@ export async function createImpala() {
 
   await emitter.clone(target);
   s.stop("Set up your project");
-  outro(`You're all set!`);
+  const packageJsonPath = join(target, "package.json");
+  const packageJson = JSON.parse(await fs.readFile(packageJsonPath, "utf-8"));
+  packageJson.name = target.replaceAll(/[^a-zA-Z0-9-]/g, "-");
+  await fs.writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2));
+  outro(
+    `You're all set!\n\nTo get started, run:\n\n  cd ${target}\n  npm install\n  npm run dev`
+  );
 }

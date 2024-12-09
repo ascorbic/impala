@@ -1,5 +1,5 @@
 {
-  "name": "impala-app",
+  "name": "@demo/impala-preact-js",
   "private": true,
   "version": "0.0.0",
   "type": "module",
