@@ -16,6 +16,7 @@ function isDynamicRoute(route: string) {
 function stripExtension(path: string) {
   return path.replace(/\.[^/.]+$/, "");
 }
+
 export async function prerender(root: string) {
   const { render, routeModules, dataModules } = (await import(
     path.resolve(root, "./dist/server/entry-server.js")
@@ -25,9 +26,13 @@ export async function prerender(root: string) {
     path.resolve(root, "./dist/static/index.html"),
     "utf-8"
   );
+  const manifestPaths = [
+    "dist/static/manifest.json",
+    "dist/static/.vite/manifest.json",
+  ].map((p) => path.resolve(root, p));
 
-  const manifestPath = path.resolve(root, "dist/static/manifest.json");
-  if (!existsSync(manifestPath)) {
+  const manifestPath = manifestPaths.find((p) => existsSync(p));
+  if (!manifestPath) {
     console.error(
       `No manifest found at ${manifestPath}. Did you build the app?`
     );
