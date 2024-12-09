@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.8](https://github.com/ascorbic/impala/compare/create-impala-v0.0.7...create-impala-v0.0.8) (2024-12-09)
+
+
+### Bug Fixes
+
+* support Vite 6 ([#39](https://github.com/ascorbic/impala/issues/39)) ([2221687](https://github.com/ascorbic/impala/commit/2221687544d533570f86b25848cf86d80b34f08d))
+
 ## [0.0.7](https://github.com/ascorbic/impala/compare/create-impala-v0.0.6...create-impala-v0.0.7) (2023-04-02)
 
 
