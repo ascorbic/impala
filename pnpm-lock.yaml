@@ -4,6 +4,12 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  '@impalajs/core': workspace:*
+  '@impalajs/react': workspace:*
+  '@impalajs/preact': workspace:*
+  create-impala: workspace:*
+
 importers:
 
   .: {}
@@ -147,11 +153,11 @@ importers:
   templates/preact-js:
     dependencies:
       '@impalajs/core':
-        specifier: latest
-        version: 0.0.12(vite@6.0.3(@types/node@18.15.7))
+        specifier: workspace:*
+        version: link:../../packages/core
       '@impalajs/preact':
-        specifier: latest
-        version: 0.0.12(preact@10.13.2)(vite@6.0.3(@types/node@18.15.7))
+        specifier: workspace:*
+        version: link:../../packages/preact
       preact:
         specifier: ^10.13.0
         version: 10.13.2
@@ -172,11 +178,11 @@ importers:
   templates/preact-ts:
     dependencies:
       '@impalajs/core':
-        specifier: latest
-        version: 0.0.12(vite@6.0.3(@types/node@18.15.7))
+        specifier: workspace:*
+        version: link:../../packages/core
       '@impalajs/preact':
-        specifier: latest
-        version: 0.0.12(preact@10.13.2)(vite@6.0.3(@types/node@18.15.7))
+        specifier: workspace:*
+        version: link:../../packages/preact
       preact:
         specifier: ^10.13.0
         version: 10.13.2
@@ -197,11 +203,11 @@ importers:
   templates/react-js:
     dependencies:
       '@impalajs/core':
-        specifier: latest
-        version: 0.0.12(vite@6.0.3(@types/node@18.15.7))
+        specifier: workspace:*
+        version: link:../../packages/core
       '@impalajs/react':
-        specifier: latest
-        version: 0.0.12(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vite@6.0.3(@types/node@18.15.7))
+        specifier: workspace:*
+        version: link:../../packages/react
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -222,11 +228,11 @@ importers:
   templates/react-ts:
     dependencies:
       '@impalajs/core':
-        specifier: latest
-        version: 0.0.12(vite@6.0.3(@types/node@18.15.7))
+        specifier: workspace:*
+        version: link:../../packages/core
       '@impalajs/react':
-        specifier: latest
-        version: 0.0.12(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vite@6.0.3(@types/node@18.15.7))
+        specifier: workspace:*
+        version: link:../../packages/react
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -671,24 +677,6 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
-
-  '@impalajs/core@0.0.12':
-    resolution: {integrity: sha512-We+SMg48L3D1Y+KowKEydKVXI7VcS9AQk9yfzh9dm1GDW97z/6Y9aZ+czAWd8AwNaXTV3lBflA6CvMrgkiCSXg==}
-    engines: {node: '>=18.0.0'}
-    hasBin: true
-    peerDependencies:
-      vite: '>=4'
-
-  '@impalajs/preact@0.0.12':
-    resolution: {integrity: sha512-UcjyoK24vvpWdP4SBrvu657DXMaNOEsVAAZAI8FTEpSV7C120TRpETGFNL4gVOeopzebcN8oURGiJVdF8cQrzw==}
-    peerDependencies:
-      preact: ^10.0.0
-
-  '@impalajs/react@0.0.12':
-    resolution: {integrity: sha512-9QQalLjQ/NRDxHI794k9Y2GQkFTDFDqNreVgDxp8jVDPIOaH2vIYZGhAE3MFxYORKok++ycSThEFEwh+mlRt0A==}
-    peerDependencies:
-      react: '>=18'
-      react-dom: '>=18'
 
   '@jridgewell/gen-mapping@0.1.1':
     resolution: {integrity: sha512-sQXCasFk+U8lWYEe66WxRDOE9PjVz4vSM51fTu3Hw+ClTpUSQb718772vH3pyS5pShp6lvQM7SxgIDXXXmOX7w==}
@@ -2087,33 +2075,6 @@ snapshots:
   '@esbuild/win32-x64@0.24.0':
     optional: true
 
-  '@impalajs/core@0.0.12(vite@6.0.3(@types/node@18.15.7))':
-    dependencies:
-      express: 4.18.2
-      path-to-regexp: 6.2.1
-      radix3: 1.0.0
-      vite: 6.0.3(@types/node@18.15.7)
-    transitivePeerDependencies:
-      - supports-color
-
-  '@impalajs/preact@0.0.12(preact@10.13.2)(vite@6.0.3(@types/node@18.15.7))':
-    dependencies:
-      '@impalajs/core': 0.0.12(vite@6.0.3(@types/node@18.15.7))
-      preact: 10.13.2
-      preact-render-to-string: 6.0.1(preact@10.13.2)
-    transitivePeerDependencies:
-      - supports-color
-      - vite
-
-  '@impalajs/react@0.0.12(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vite@6.0.3(@types/node@18.15.7))':
-    dependencies:
-      '@impalajs/core': 0.0.12(vite@6.0.3(@types/node@18.15.7))
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    transitivePeerDependencies:
-      - supports-color
-      - vite
-
   '@jridgewell/gen-mapping@0.1.1':
     dependencies:
       '@jridgewell/set-array': 1.1.2
@@ -3112,7 +3073,7 @@ snapshots:
     dependencies:
       browserslist: 4.21.5
       escalade: 3.1.1
-      picocolors: 1.0.0
+      picocolors: 1.1.1
 
   utils-merge@1.0.1: {}
 
