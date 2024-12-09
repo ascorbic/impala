@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.14](https://github.com/ascorbic/impala/compare/core-v0.0.13...core-v0.0.14) (2024-12-09)
+
+
+### Bug Fixes
+
+* support Vite 6 ([#39](https://github.com/ascorbic/impala/issues/39)) ([2221687](https://github.com/ascorbic/impala/commit/2221687544d533570f86b25848cf86d80b34f08d))
+
 ## [0.0.13](https://github.com/ascorbic/impala/compare/core-v0.0.12...core-v0.0.13) (2023-11-05)
 
 
