@@ -13,6 +13,7 @@
   "license": "MIT",
   "devDependencies": {
     "@clack/prompts": "^0.6.3",
+    "@types/node": "^18.15.7",
     "degit": "^2.8.4",
     "picocolors": "^1.0.0",
     "tsup": "^6.7.0"
