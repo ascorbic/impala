@@ -5,7 +5,7 @@
 </p>
 
 <h2 align="center">Very simple React and Preact static site generator</h2>
-<h3 align="center"><pre>npm init impala@latest</pre></h3>
+<h3 align="center"><pre>npm create impala@latest</pre></h3>
 
 Impala is a bare-bones static-site framework, powered by [Vite](https://github.com/vitejs/vite). It currently supports [React](https://react.dev) and [Preact](https://preactjs.com/). Features include:
 
