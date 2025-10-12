@@ -1,5 +1,4 @@
 import React, { createContext, ReactElement, ReactNode } from "react";
-import { renderToStaticMarkup } from "react-dom/server";
 
 class HeadProvider {
   private head: React.ReactElement[] = [];
@@ -29,10 +28,6 @@ class HeadProvider {
 
   public getHead() {
     return this.head;
-  }
-
-  public getAsString() {
-    return renderToStaticMarkup(<>{...this.head}</>);
   }
 }
 
