@@ -1,0 +1,31 @@
+{
+  "name": "@impalajs/vite-plugin-extract-server-components",
+  "version": "0.0.6",
+  "description": "",
+  "scripts": {
+    "build": "tsup src/plugin.ts --format esm --dts --clean"
+  },
+  "module": "./dist/plugin.mjs",
+  "types": "./dist/plugin.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/plugin.d.ts",
+      "import": "./dist/plugin.mjs"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "tsup": "^6.7.0"
+  },
+  "peerDependencies": {
+    "vite": ">=4"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
