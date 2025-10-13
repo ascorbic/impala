@@ -1,5 +1,4 @@
 import { createContext, VNode } from "preact";
-import render from "preact-render-to-string";
 
 class HeadProvider {
   private head: VNode<any>[] = [];
@@ -29,10 +28,6 @@ class HeadProvider {
 
   public getHead() {
     return this.head;
-  }
-
-  public getAsString() {
-    return render(<>{...this.head}</>);
   }
 }
 
