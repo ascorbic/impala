@@ -1,6 +1,6 @@
 import React, { createContext, ReactElement, ReactNode } from "react";
 
-class HeadProvider {
+export class HeadManager {
   private head: React.ReactElement[] = [];
 
   private removeTag(tag: string) {
@@ -31,6 +31,6 @@ class HeadProvider {
   }
 }
 
-const headProvider = new HeadProvider();
+const defaultHeadManager = new HeadManager();
 
-export const HeadContext = createContext(headProvider);
+export const HeadContext = createContext(defaultHeadManager);

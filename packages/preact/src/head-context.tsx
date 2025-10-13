@@ -1,6 +1,6 @@
 import { createContext, VNode } from "preact";
 
-class HeadProvider {
+export class HeadManager {
   private head: VNode<any>[] = [];
 
   private removeTag(tag: string) {
@@ -31,6 +31,6 @@ class HeadProvider {
   }
 }
 
-const headProvider = new HeadProvider();
+const defaultHeadProvider = new HeadManager();
 
-export const HeadContext = createContext(headProvider);
+export const HeadContext = createContext(defaultHeadProvider);
