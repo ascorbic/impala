@@ -17,6 +17,7 @@ export async function render(
   // We create a new head manager for each request to avoid sharing state across routes
   const headManager = new HeadManager();
 
+  // Now on each render, each page will use their own head context instead of default one
   const body = renderToString(
     <HeadContext.Provider value={headManager}>
       <Page {...context} />
