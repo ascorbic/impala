@@ -54,6 +54,13 @@
   * dependencies
     * @impalajs/core bumped to 0.0.14
 
+## [0.0.15](https://github.com/ascorbic/impala/compare/preact-v0.0.14...preact-v0.0.15) (2025-10-13)
+
+
+### Bug Fixes
+
+* drop `getAsString` from `HeadContext` ([#41](https://github.com/ascorbic/impala/issues/41)) ([407e9b6](https://github.com/ascorbic/impala/commit/407e9b64345845cedab8f02cf9857dc8ae2b4634))
+
 ## 0.0.5 (2023-03-28)
 
 
